@@ -1,5 +1,6 @@
 ﻿using System;
 using NativeWebSocket;
+using UnityEngine;
 
 namespace GlitchSim.Runtime.Communication
 {
@@ -40,6 +41,7 @@ namespace GlitchSim.Runtime.Communication
         
         public RobotCommunication(RobotCommunicationSettings settings)
         {
+            Debug.LogWarning(NetworkTablesWrapper.test());
             _settings = settings;
 
             // Start the websocket

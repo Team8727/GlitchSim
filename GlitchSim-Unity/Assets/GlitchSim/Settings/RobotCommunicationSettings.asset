@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ffad06e0a1046fc9baec2b54d1235dc, type: 3}
   m_Name: RobotCommunicationSettings
   m_EditorClassIdentifier: 
-  _hostName: ws://localhost:5810/nt/999
+  _hostName: ws://localhost:5810/nt/1
