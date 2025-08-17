@@ -473,6 +473,8 @@ MonoBehaviour:
   rotationState: 0
   speed: 100
   useVelocityControl: 0
+  enforceLimits: 1
+  speedMultiplier: 1
   maxForce: 1000
   damping: 10
 --- !u!136 &342427672
@@ -606,6 +608,8 @@ MonoBehaviour:
   rotationState: 0
   speed: 100
   useVelocityControl: 0
+  enforceLimits: 1
+  speedMultiplier: 1
   maxForce: 1000
   damping: 10
 --- !u!136 &467529672
@@ -739,6 +743,8 @@ MonoBehaviour:
   rotationState: 0
   speed: 100
   useVelocityControl: 0
+  enforceLimits: 1
+  speedMultiplier: 1
   maxForce: 1000
   damping: 10
 --- !u!136 &613481635
@@ -872,6 +878,8 @@ MonoBehaviour:
   rotationState: 0
   speed: 50
   useVelocityControl: 0
+  enforceLimits: 1
+  speedMultiplier: 1
   maxForce: 1000
   damping: 10
 --- !u!65 &618877089
@@ -1003,6 +1011,8 @@ MonoBehaviour:
   rotationState: 0
   speed: 100
   useVelocityControl: 0
+  enforceLimits: 1
+  speedMultiplier: 1
   maxForce: 1000
   damping: 10
 --- !u!1 &716196821 stripped
@@ -1019,8 +1029,8 @@ ArticulationBody:
   m_GameObject: {fileID: 716196821}
   m_Enabled: 1
   serializedVersion: 5
-  m_Mass: 2
-  m_ParentAnchorPosition: {x: 0, y: 0, z: 0}
+  m_Mass: 4
+  m_ParentAnchorPosition: {x: -0.002159, y: 0, z: 0.000762}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -1083,7 +1093,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716196821}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a83c341ed6921345bed0adc5dc9d167, type: 3}
   m_Name: 
@@ -1091,6 +1101,8 @@ MonoBehaviour:
   rotationState: 0
   speed: 100
   useVelocityControl: 0
+  enforceLimits: 1
+  speedMultiplier: 1
   maxForce: 1000
   damping: 10
 --- !u!65 &716196830
@@ -1114,6 +1126,43 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.008166604, y: 0.001, z: 0.008166756}
   m_Center: {x: -0.0000004953472, y: 0, z: 0.002158658}
+--- !u!114 &716196834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716196821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be70b5c0f9ada134e840ef4b7b7df2a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joints:
+  - inputAxis: Elevator
+    robotPart: {fileID: 1593169435}
+  - inputAxis: Elevator
+    robotPart: {fileID: 1225546401}
+  - inputAxis: LevArm_Joint
+    robotPart: {fileID: 618877081}
+  - inputAxis: LevArm_Roller_Joint
+    robotPart: {fileID: 914994557}
+  - inputAxis: Elevator
+    robotPart: {fileID: 613481627}
+  - inputAxis: Elevator
+    robotPart: {fileID: 2019901967}
+  - inputAxis: GroundCoral_Joint
+    robotPart: {fileID: 967146430}
+  - inputAxis: GCJ
+    robotPart: {fileID: 1614698162}
+  - inputAxis: GroundCoral_Roller_Joint
+    robotPart: {fileID: 342427664}
+  - inputAxis: GroundCoral_Shaft_Joint
+    robotPart: {fileID: 645722042}
+  - inputAxis: Hopper_Joint
+    robotPart: {fileID: 886940648}
+  - inputAxis: HopperRoller_Joint
+    robotPart: {fileID: 467529664}
 --- !u!1 &886940648 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5744059987948812186, guid: b1a56b43e78e5994ba8687c1611624e2, type: 3}
@@ -1222,6 +1271,8 @@ MonoBehaviour:
   rotationState: 0
   speed: 100
   useVelocityControl: 0
+  enforceLimits: 1
+  speedMultiplier: 1
   maxForce: 1000
   damping: 10
 --- !u!65 &886940656
@@ -1353,6 +1404,8 @@ MonoBehaviour:
   rotationState: 0
   speed: 50
   useVelocityControl: 0
+  enforceLimits: 1
+  speedMultiplier: 1
   maxForce: 1000
   damping: 10
 --- !u!136 &914994565
@@ -1413,7 +1466,7 @@ ArticulationBody:
     forceLimit: 3.4028235e+38
     target: 0
     targetVelocity: 0
-    driveType: 0
+    driveType: 2
   m_YDrive:
     lowerLimit: 0
     upperLimit: 0
@@ -1486,6 +1539,8 @@ MonoBehaviour:
   rotationState: 0
   speed: 100
   useVelocityControl: 0
+  enforceLimits: 1
+  speedMultiplier: 1
   maxForce: 1000
   damping: 10
 --- !u!65 &967146438
@@ -1562,7 +1617,7 @@ ArticulationBody:
     forceLimit: 3.4028235e+38
     target: 0
     targetVelocity: 0
-    driveType: 0
+    driveType: 2
   m_LinearDamping: 0.05
   m_AngularDamping: 0.05
   m_JointFriction: 0.05
@@ -1615,8 +1670,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationState: 0
-  speed: 50
+  speed: 500
   useVelocityControl: 0
+  enforceLimits: 1
+  speedMultiplier: 1
   maxForce: 1000
   damping: 10
 --- !u!65 &1225546408
@@ -1748,9 +1805,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b1a56b43e78e5994ba8687c1611624e2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1441413831}
     - targetCorrespondingSourceObject: {fileID: -2405437483533954765, guid: b1a56b43e78e5994ba8687c1611624e2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 716196823}
@@ -1760,15 +1814,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2405437483533954765, guid: b1a56b43e78e5994ba8687c1611624e2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 716196830}
+    - targetCorrespondingSourceObject: {fileID: -2405437483533954765, guid: b1a56b43e78e5994ba8687c1611624e2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 716196834}
     - targetCorrespondingSourceObject: {fileID: -9058333127837023912, guid: b1a56b43e78e5994ba8687c1611624e2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1593169439}
     - targetCorrespondingSourceObject: {fileID: -9058333127837023912, guid: b1a56b43e78e5994ba8687c1611624e2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1593169442}
+      addedObject: {fileID: 1593169446}
     - targetCorrespondingSourceObject: {fileID: -9058333127837023912, guid: b1a56b43e78e5994ba8687c1611624e2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1593169446}
+      addedObject: {fileID: 1593169451}
     - targetCorrespondingSourceObject: {fileID: -3657762377656285119, guid: b1a56b43e78e5994ba8687c1611624e2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1225546404}
@@ -1896,50 +1953,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 467529672}
   m_SourcePrefab: {fileID: 100100000, guid: b1a56b43e78e5994ba8687c1611624e2, type: 3}
---- !u!1 &1441413829 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b1a56b43e78e5994ba8687c1611624e2, type: 3}
-  m_PrefabInstance: {fileID: 1354547471}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1441413831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441413829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be70b5c0f9ada134e840ef4b7b7df2a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joints:
-  - inputAxis: Chassis
-    robotPart: {fileID: 716196821}
-  - inputAxis: Elevator_1_Joint
-    robotPart: {fileID: 1593169435}
-  - inputAxis: Elevator_2_Joint
-    robotPart: {fileID: 1225546401}
-  - inputAxis: LevArm_Joint
-    robotPart: {fileID: 618877081}
-  - inputAxis: LevArm_Roller_Joint
-    robotPart: {fileID: 914994557}
-  - inputAxis: LevRoller1_Joint
-    robotPart: {fileID: 613481627}
-  - inputAxis: LevRoller2_Joint
-    robotPart: {fileID: 2019901967}
-  - inputAxis: GroundCoral_Joint
-    robotPart: {fileID: 967146430}
-  - inputAxis: GCJ
-    robotPart: {fileID: 1614698162}
-  - inputAxis: GroundCoral_Roller_Joint
-    robotPart: {fileID: 342427664}
-  - inputAxis: GroundCoral_Shaft_Joint
-    robotPart: {fileID: 645722042}
-  - inputAxis: Hopper_Joint
-    robotPart: {fileID: 886940648}
-  - inputAxis: HopperRoller_Joint
-    robotPart: {fileID: 467529664}
 --- !u!1 &1593169435 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -9058333127837023912, guid: b1a56b43e78e5994ba8687c1611624e2, type: 3}
@@ -1984,7 +1997,7 @@ ArticulationBody:
     forceLimit: 3.4028235e+38
     target: 0
     targetVelocity: 0
-    driveType: 0
+    driveType: 1
   m_ZDrive:
     lowerLimit: 0
     upperLimit: 0
@@ -2011,23 +2024,6 @@ ArticulationBody:
   m_Immovable: 0
   m_UseGravity: 1
   m_CollisionDetectionMode: 0
---- !u!114 &1593169442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1593169435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a83c341ed6921345bed0adc5dc9d167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationState: 0
-  speed: 50
-  useVelocityControl: 0
-  maxForce: 1000
-  damping: 10
 --- !u!65 &1593169446
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2049,6 +2045,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.008567297, y: 0.00057398627, z: 0.00030298598}
   m_Center: {x: -0.004381714, y: -0.0020900364, z: 0.00023475889}
+--- !u!114 &1593169451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593169435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a83c341ed6921345bed0adc5dc9d167, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationState: 0
+  speed: 300
+  useVelocityControl: 0
+  enforceLimits: 1
+  speedMultiplier: 1
+  maxForce: 1000
+  damping: 10
 --- !u!1 &1614698162 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2142509166433473920, guid: b1a56b43e78e5994ba8687c1611624e2, type: 3}
@@ -2157,6 +2172,8 @@ MonoBehaviour:
   rotationState: 0
   speed: 100
   useVelocityControl: 0
+  enforceLimits: 1
+  speedMultiplier: 1
   maxForce: 1000
   damping: 10
 --- !u!136 &1614698170
@@ -2268,6 +2285,8 @@ MonoBehaviour:
   rotationState: 0
   speed: 100
   useVelocityControl: 0
+  enforceLimits: 1
+  speedMultiplier: 1
   maxForce: 1000
   damping: 10
 --- !u!136 &2019901975
@@ -2322,7 +2341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 687e0b2b2e41d6146a33f0516af78d69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robot: {fileID: 1441413829}
+  robot: {fileID: 716196821}
 --- !u!4 &2065614600
 Transform:
   m_ObjectHideFlags: 0
