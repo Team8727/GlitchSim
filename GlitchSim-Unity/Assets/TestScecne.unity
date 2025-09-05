@@ -314,13 +314,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 309811481}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.5490997, z: -0, w: 0.8357569}
-  m_LocalPosition: {x: -1.405, y: 0.51, z: -0.737}
+  m_LocalRotation: {x: 0.15058969, y: 0.54011256, z: -0.09893877, w: 0.82207805}
+  m_LocalPosition: {x: -1.166, y: 0.97, z: -0.634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 66.611, z: 0}
+  m_LocalEulerAnglesHint: {x: 20.761, y: 66.611, z: 0}
 --- !u!114 &309811485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,7 +682,7 @@ ArticulationBody:
     forceLimit: 3.4028235e+38
     target: 0
     targetVelocity: 0
-    driveType: 0
+    driveType: 2
   m_YDrive:
     lowerLimit: 0
     upperLimit: 0
@@ -774,7 +774,7 @@ ArticulationBody:
     forceLimit: 3.4028235e+38
     target: 0
     targetVelocity: 0
-    driveType: 3
+    driveType: 2
   m_YDrive:
     lowerLimit: 0
     upperLimit: 0
@@ -961,6 +961,54 @@ MonoBehaviour:
     minLimit: 0
     maxLimit: 0
     detectedJointType: 1
+    detectedDriveType: 2
+    jointInfo: 
+  - inputAxis: LevArm
+    jointObject: {fileID: 618877081}
+    speed: 500
+    inputDeadzone: 0
+    driveToLimits: 0
+    forceTargetBehavior: 0
+    useCustomLimits: 0
+    minLimit: 0
+    maxLimit: 0
+    detectedJointType: 2
+    detectedDriveType: 2
+    jointInfo: 
+  - inputAxis: LevRoller
+    jointObject: {fileID: 613481627}
+    speed: 500
+    inputDeadzone: 0
+    driveToLimits: 0
+    forceTargetBehavior: 0
+    useCustomLimits: 0
+    minLimit: 0
+    maxLimit: 0
+    detectedJointType: 2
+    detectedDriveType: 2
+    jointInfo: 
+  - inputAxis: LevRoller
+    jointObject: {fileID: 2019901967}
+    speed: 500
+    inputDeadzone: 0
+    driveToLimits: 0
+    forceTargetBehavior: 0
+    useCustomLimits: 0
+    minLimit: 0
+    maxLimit: 0
+    detectedJointType: 2
+    detectedDriveType: 2
+    jointInfo: 
+  - inputAxis: GroundCoral
+    jointObject: {fileID: 967146430}
+    speed: 500
+    inputDeadzone: 0
+    driveToLimits: 0
+    forceTargetBehavior: 0
+    useCustomLimits: 0
+    minLimit: 0
+    maxLimit: 0
+    detectedJointType: 2
     detectedDriveType: 2
     jointInfo: 
 --- !u!1 &886940648 stripped
@@ -1288,7 +1336,7 @@ ArticulationBody:
     driveType: 0
   m_ZDrive:
     lowerLimit: 0
-    upperLimit: 0.9
+    upperLimit: 0.45
     stiffness: 1000
     damping: 200
     forceLimit: 3.4028235e+38
@@ -1561,7 +1609,7 @@ ArticulationBody:
     driveType: 0
   m_YDrive:
     lowerLimit: 0
-    upperLimit: 1
+    upperLimit: 0.9
     stiffness: 1000
     damping: 300
     forceLimit: 3.4028235e+38
