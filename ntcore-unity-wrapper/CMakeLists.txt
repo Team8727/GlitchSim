@@ -5,5 +5,5 @@ set(CMAKE_CXX_STANDARD 20)
 
 find_package(wpilib REQUIRED)
 
-add_library(ntcore_unity_wrapper SHARED library.cpp)
+add_library(ntcore_unity_wrapper SHARED ntcore_unity.cpp)
 target_link_libraries(ntcore_unity_wrapper ntcore)

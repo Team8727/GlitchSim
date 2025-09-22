@@ -451,6 +451,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebcb496794a9409d8fbf0761fb8db9fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  topics:
+  - name: test/boolean
+    type: 0
+  - name: test/float
+    type: 1
+  - name: test/double
+    type: 2
 --- !u!4 &1238217981
 Transform:
   m_ObjectHideFlags: 0

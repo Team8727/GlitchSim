@@ -26,7 +26,7 @@ namespace GlitchSim.Runtime.Core
 
         private void Update()
         {
-            _robotCommunication.DispatchMessageQueue();
+            _robotCommunication.UpdateSubscribers();
         }
     }
 }
