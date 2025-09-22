@@ -1,3 +1,4 @@
+using System;
 using GlitchSim.Runtime.Communication;
 using UnityEngine;
 
@@ -18,9 +19,14 @@ namespace GlitchSim.Runtime.Core
             ServiceLocator.Register<ICommunication>(_robotCommunication);
         }
 
+        private void OnDestroy()
+        {
+            ServiceLocator.Unregister<ICommunication>();
+        }
+
         private void Update()
         {
-            _robotCommunication.DispatchMessageQueue();
+            _robotCommunication.UpdateSubscribers();
         }
     }
 }

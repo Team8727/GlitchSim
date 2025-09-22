@@ -4,21 +4,32 @@
 
 package frc.robot;
 
-import edu.wpi.first.networktables.StringPublisher;
+import edu.wpi.first.networktables.BooleanPublisher;
+import edu.wpi.first.networktables.FloatPublisher;
+import edu.wpi.first.networktables.DoublePublisher;
+import edu.wpi.first.networktables.IntegerPublisher;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 
 public class Robot extends TimedRobot {
-  private final StringPublisher m_testStringPublisher 
-    = edu.wpi.first.networktables.NetworkTableInstance.getDefault()
-    .getStringTopic("test/string")
-    .publish();
-  private int m_counter = 0;
+  private final NetworkTableInstance networkTableInstance = NetworkTableInstance.getDefault();
+  private final BooleanPublisher testBooleanPublisher = networkTableInstance.getBooleanTopic("test/boolean").publish();
+  private final IntegerPublisher testIntegerPublisher = networkTableInstance.getIntegerTopic("test/integer").publish();
+  private final FloatPublisher testFloatPublisher = networkTableInstance.getFloatTopic("test/float").publish();
+  private final DoublePublisher testDoublePublisher = networkTableInstance.getDoubleTopic("test/double").publish();
+  
+  private double counter = 0.0;
+  private final double increment = 0.23;
 
   public Robot() {}
 
   @Override
   public void robotPeriodic() {
-    m_testStringPublisher.set("Hello, NetworkTables!" + (m_counter++));
+    counter += increment;
+    testBooleanPublisher.set(counter % 2.0 < 1.0);
+    testIntegerPublisher.set((int) counter);
+    testFloatPublisher.set((float) counter);
+    testDoublePublisher.set(counter);
   }
 
   @Override

@@ -1,79 +1,76 @@
 ﻿using System;
-using NativeWebSocket;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace GlitchSim.Runtime.Communication
 {
-    public class RobotCommunicationMessage : IMessage
-    {
-        private readonly string _message;
-
-        public RobotCommunicationMessage(string message)
-        {
-            _message = message;
-        }
-
-        public RobotCommunicationMessage(byte[] data)
-        {
-            _message = System.Text.Encoding.UTF8.GetString(data);
-        }
-        
-        public override string ToString()
-        {
-            return _message;
-        }
-        
-        public byte[] ToBytes()
-        {
-            return System.Text.Encoding.UTF8.GetBytes(_message);
-        }
-    }
-    
     /// <summary>
     /// Provides communication to and from a number of robots.
     /// </summary>
-    public class RobotCommunication : ICommunication, IDisposable
+    public class RobotCommunication : ICommunication
     {
         public event ICommunication.MessageReceivedHandler OnMessageReceived;
         
         private readonly RobotCommunicationSettings _settings;
-        private readonly WebSocket _webSocket;
-        
+        private readonly NetworkTablesWrapper _networkTables = new();
+        private readonly List<NetworkTablesWrapper.Subscriber> _subscribers = new();
+
         public RobotCommunication(RobotCommunicationSettings settings)
         {
             _settings = settings;
+            
+            _networkTables.Connect("UnityClient", _settings.HostName, _settings.Port);
+        }
 
-            // Start the websocket
+        public void Subscribe(string topicName, ICommunication.DataType type)
+        {
+            NetworkTablesWrapper.TopicType topicType;
+            
+            switch (type)
             {
-                _webSocket = new WebSocket(_settings.HostName);
-                _webSocket.OnMessage += OnWebsocketMessage;
-                _webSocket.Connect();
+                case ICommunication.DataType.Boolean:
+                    topicType = NetworkTablesWrapper.TopicType.Boolean;
+                    break;
+                case ICommunication.DataType.Float:
+                    topicType = NetworkTablesWrapper.TopicType.Float;
+                    break;
+                case ICommunication.DataType.Double:
+                    topicType = NetworkTablesWrapper.TopicType.Double;
+                    break;
+                case ICommunication.DataType.Unsupported:
+                    return;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
-        }
-
-        public void Dispose()
-        {
-            _webSocket.Close();
-        }
-
-        public void SendMessage(IMessage message)
-        {
-            if (message is RobotCommunicationMessage robotCommunicationMessage)
+            
+            // Avoid duplicates
+            foreach (var subscriber in _subscribers)
             {
-                _webSocket.Send(robotCommunicationMessage.ToBytes());
+                if (subscriber.TopicName == topicName && subscriber.Type == topicType)
+                {
+                    return;
+                }
             }
+            
+            _subscribers.Add(_networkTables.Subscribe(topicName, topicType));
         }
 
-        /// <summary>
-        /// Pump the incoming messages
-        /// </summary>
-        public void DispatchMessageQueue()
+        public void UpdateSubscribers()
         {
-            _webSocket.DispatchMessageQueue();
+            if (OnMessageReceived == null)
+            {
+                return;
+            }
+            
+            foreach (var subscriber in _subscribers)
+            {
+                OnMessageReceived.Invoke(subscriber.GetMessage());
+            }
         }
         
-        private void OnWebsocketMessage(byte[] data)
+        public void SendMessage(IMessage message)
         {
-            OnMessageReceived?.Invoke(new RobotCommunicationMessage(data));
+            // TODO
         }
     }
 }

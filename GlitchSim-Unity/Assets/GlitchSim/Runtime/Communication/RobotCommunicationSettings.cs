@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GlitchSim.Runtime.Communication
 {
@@ -8,7 +9,12 @@ namespace GlitchSim.Runtime.Communication
     [CreateAssetMenu(fileName = "RobotCommunicationSettings", menuName = "GlitchSim/RobotCommunicationSettings")]
     public class RobotCommunicationSettings : ScriptableObject
     {
-        [SerializeField] private string _hostName = "ws://localhost:8080";
-        public string HostName => _hostName;
+        [SerializeField] private string hostName = "ws://localhost";
+        
+        [SerializeField] private uint port = 8080;
+        
+        public string HostName => hostName;
+        
+        public uint Port => port;
     }
 }

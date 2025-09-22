@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ffad06e0a1046fc9baec2b54d1235dc, type: 3}
   m_Name: RobotCommunicationSettings
   m_EditorClassIdentifier: 
+  hostName: localhost
+  port: 5810
